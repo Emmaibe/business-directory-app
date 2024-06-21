@@ -1,10 +1,10 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/clerk-expo";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ExploreBusinessListCard from "../../components/Explore/ExploreBusinessListCard"
+import ExploreBusinessListCard from "../../components/Explore/ExploreBusinessListCard";
 import { useNavigation } from "expo-router";
 
 export default function MyBusiness() {
@@ -19,16 +19,16 @@ export default function MyBusiness() {
   useEffect(() => {
     navigation.setOptions({
       headerShown: true,
-      title: 'My Business'
-    })
-  }, [])
+      title: "My Business",
+    });
+  }, []);
 
   useEffect(() => {
     user && getUserBusiness();
-  }, [])
+  }, []);
 
   const getUserBusiness = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
 
     setBusinessList([]);
 
@@ -47,20 +47,29 @@ export default function MyBusiness() {
   };
 
   return (
-    <View className="px-[19px] mt-2">
+    <View className="px-[19px] mt-2 h-full">
       {/* <Text className="font-outfitbold text-[25px]">My Business</Text> */}
 
-      <FlatList 
-        data={businessList}
-        refreshing={isLoading}
-        onRefresh={getUserBusiness}
-        renderItem={({ item, index }) => (
-          <ExploreBusinessListCard 
-            key={index}
-            business={item}
-          />
-        )}
-      />
+      {businessList?.length > 0 && !isLoading ? (
+        <FlatList
+          data={businessList}
+          refreshing={isLoading}
+          onRefresh={getUserBusiness}
+          renderItem={({ item, index }) => (
+            <ExploreBusinessListCard key={index} business={item} />
+          )}
+        />
+      ) : businessList?.length < 0 && !isLoading ? (
+        <Text className="text-[25px] font-outfitbold text-gray-100 text-center mt-[50%]">
+          No Business Found
+        </Text>
+      ) : (
+        <ActivityIndicator
+          size={"large"}
+          color={"#7F57F1"}
+          className="mt-[90%]"
+        />
+      )}
     </View>
   );
 }

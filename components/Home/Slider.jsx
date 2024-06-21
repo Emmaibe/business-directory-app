@@ -38,7 +38,7 @@ export default function Slider() {
                 <Image 
                     key={index}
                     source={{ uri: item.imageUrl }} 
-                    className="w-[300] h-[160] rounded-xl mr-[15]"
+                    className={`w-[300] h-[160] rounded-xl mr-[15] ${index == (sliderList?.length - 1) ? 'mr-[38]' : ''}`}
                 />
             )}
         />
