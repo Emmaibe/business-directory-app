@@ -20,7 +20,7 @@ export default function PopularBusiness() {
 
         (await querySnapShot).forEach((doc) => {
             console.log(doc.data());
-            setBusinessList((prev) => [...prev, doc.data()])
+            setBusinessList((prev) => [...prev, { id: doc.id, ...doc.data() }])
         })
     }
 

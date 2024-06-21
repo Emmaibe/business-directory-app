@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, TouchableOpacity, Linking } from 'react-native'
+import { View, Text, FlatList, Image, TouchableOpacity, Linking, Share } from 'react-native'
 import React from 'react'
 
 export default function ActionButton({ business }) {
@@ -25,12 +25,17 @@ export default function ActionButton({ business }) {
             id: 4,
             name: "Share",
             icon: require("../../assets/images/social.png"),
-            url: 'tel:'+business?.contect
+            url: ''
         },
     ]
 
     const handleOnPress = (item) => {
         if (item.name === 'Share') {
+            Share.share({
+                message: 'Business Name: ' + business?.name + '\n' + 'Address: '+ 
+                business?.address + '\n' + 'Find more details on Business website' + 
+                '\n' + business.website
+            })
             return ;
         }
 
@@ -39,24 +44,21 @@ export default function ActionButton({ business }) {
 
   return (
     <View className="bg-white p-[20]">
-      <FlatList 
-        data={actionButtonMenu}
-        numColumns={4}
-        columnWrapperStyle={{ justifyContent: 'space-between' }}
-        renderItem={({item, index}) => (
-            <TouchableOpacity 
-                key={index}
-                onPress={() => handleOnPress(item)}
-            >
-                <Image 
-                    source={item?.icon}
-                    className="w-[50] h-[50]"
-                />
+        <View className="flex-row justify-between items-center">
+            { actionButtonMenu?.map((item, index) => (
+                <TouchableOpacity 
+                    key={index}
+                    onPress={() => handleOnPress(item)}
+                >
+                    <Image 
+                        source={item?.icon}
+                        className="w-[50] h-[50]"
+                    />
                 
-                <Text className="font-outfitmedium text-center mt-1">{item?.name}</Text>
-            </TouchableOpacity>
-        )}
-      />
+                    <Text className="font-outfitmedium text-center mt-1">{item?.name}</Text>
+                </TouchableOpacity>
+            )) }
+        </View>
     </View>
   )
 }

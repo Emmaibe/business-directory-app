@@ -1,9 +1,12 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useRouter } from 'expo-router'
 
 export default function PopularBusinessCard({ business }) {
+  const router = useRouter();
+
   return (
-    <View className="ml-[20] mt-3 p-2 bg-white rounded-xl">
+    <TouchableOpacity onPress={() => router.push('/businessdetail/'+business?.id)} className="ml-[20] mt-3 p-2 bg-white rounded-xl">
         <Image 
             source={{ uri: business?.imageUrl }}
             className="w-[200] h-[130] rounded-xl mb-1"
@@ -28,6 +31,6 @@ export default function PopularBusinessCard({ business }) {
             </View>
             
         </View>
-    </View>
+    </TouchableOpacity>
   )
 }
