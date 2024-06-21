@@ -40,9 +40,11 @@ export default function Reviews({ business }) {
 
         <TextInput 
             placeholder='Write your comment'
+            multiline
+            numberOfLines={4}
             onChangeText={e => setUserInput(e)}
             placeholderTextColor="#8f8f8f"
-            className="border-2 p-[15px] rounded-lg border-gray-100"
+            className="border-2 p-[15px] rounded-lg border-gray-100 h-[100]"
         />
 
         <TouchableOpacity
