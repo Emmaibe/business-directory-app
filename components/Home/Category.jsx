@@ -53,6 +53,8 @@ export default function Category({ explore = false, onCategorySelect }) {
           <CategoryItem
             category={item}
             key={item.id}
+            index={index}
+            totalNum={categoryList?.length}
             onCategoryPress={() => handleOnCategoryPress(item)}
           />
         )}

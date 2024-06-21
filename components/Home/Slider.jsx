@@ -36,6 +36,7 @@ export default function Slider() {
             className="pl-[20]"
             renderItem={({ item, index }) => (
                 <Image 
+                    key={index}
                     source={{ uri: item.imageUrl }} 
                     className="w-[300] h-[160] rounded-xl mr-[15]"
                 />

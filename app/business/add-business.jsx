@@ -112,7 +112,6 @@ export default function AddBusiness() {
       const imageRef = ref(storage, "business-app/" + fileName);
 
       uploadBytes(imageRef, blob).then((snapShot) => {
-        console.log(fileUploaded);
         getDownloadURL(imageRef).then(async (url) => {
           console.log(url);
 

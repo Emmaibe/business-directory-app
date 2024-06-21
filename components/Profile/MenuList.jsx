@@ -10,13 +10,13 @@ export default function MenuList() {
         id: 1,
         name: 'Add Business',
         icon: require('../../assets/images/add.png'),
-        path: 'business/add-business'
+        path: '/business/add-business'
     },
     {
         id: 2,
         name: 'My Business',
         icon: require('../../assets/images/business.png'),
-        path: ''
+        path: '/business/my-business'
     },
     {
         id: 3,
