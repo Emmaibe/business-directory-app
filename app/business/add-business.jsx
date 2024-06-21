@@ -139,13 +139,13 @@ export default function AddBusiness() {
 
   return (
     <View className="p-4">
-      <Text className="font-outfitbold text-[25px]">Add New Business</Text>
+      {/* <Text className="font-outfitbold text-[25px]">Add New Business</Text> */}
 
-      <Text className="font-outfit text-gray-100">
-        Fill all fields in order to add new business
+      <Text className="font-outfit text-gray-100 text-lg">
+        Fill all fields in order to add a new business
       </Text>
 
-      <TouchableOpacity onPress={handleImagePick} className="mt-5">
+      <TouchableOpacity onPress={handleImagePick} className="mt-4 mb-3">
         {!image ? (
           <Image
             source={require("../../assets/images/image-picker.png")}
@@ -162,30 +162,35 @@ export default function AddBusiness() {
       <View>
         <TextInput
           placeholder="Name"
+          placeholderTextColor={"#C8C8C8"}
           onChangeText={(e) => handleTextChange(e, "name")}
           className="p-3 border border-primary rounded-md text-[17px] bg-white mt-3 font-outfit"
         />
 
         <TextInput
           placeholder="Address"
+          placeholderTextColor={"#C8C8C8"}
           onChangeText={(e) => handleTextChange(e, "address")}
           className="p-3 border border-primary rounded-md text-[17px] bg-white mt-3 font-outfit"
         />
 
         <TextInput
           placeholder="Contact"
+          placeholderTextColor={"#C8C8C8"}
           onChangeText={(e) => handleTextChange(e, "contact")}
           className="p-3 border border-primary rounded-md text-[17px] bg-white mt-3 font-outfit"
         />
 
         <TextInput
           placeholder="Website"
+          placeholderTextColor={"#C8C8C8"}
           onChangeText={(e) => handleTextChange(e, "website")}
           className="p-3 border border-primary rounded-md text-[17px] bg-white mt-3 font-outfit"
         />
 
         <TextInput
           placeholder="About"
+          placeholderTextColor={"#C8C8C8"}
           onChangeText={(e) => handleTextChange(e, "about")}
           multiline
           numberOfLines={5}

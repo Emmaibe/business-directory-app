@@ -5,13 +5,23 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ExploreBusinessListCard from "../../components/Explore/ExploreBusinessListCard"
+import { useNavigation } from "expo-router";
 
 export default function MyBusiness() {
   const { user } = useUser();
 
+  const navigation = useNavigation();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [businessList, setBusinessList] = useState([]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      title: 'My Business'
+    })
+  }, [])
 
   useEffect(() => {
     user && getUserBusiness();
@@ -37,8 +47,8 @@ export default function MyBusiness() {
   };
 
   return (
-    <SafeAreaView className="px-[19px] pt-6">
-      <Text className="font-outfitbold text-[25px]">My Business</Text>
+    <View className="px-[19px] mt-2">
+      {/* <Text className="font-outfitbold text-[25px]">My Business</Text> */}
 
       <FlatList 
         data={businessList}
@@ -51,6 +61,6 @@ export default function MyBusiness() {
           />
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 }

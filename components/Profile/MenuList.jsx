@@ -1,9 +1,12 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity, Share } from "react-native";
 import React from "react";
 import { useRouter } from "expo-router";
+import { useAuth } from "@clerk/clerk-expo";
 
 export default function MenuList() {
   const router = useRouter();
+
+  const { signOut } = useAuth();
 
   const menuList = [
     {
@@ -22,23 +25,27 @@ export default function MenuList() {
         id: 3,
         name: 'Share App',
         icon: require('../../assets/images/share.png'),
-        path: ''
+        path: 'share'
     },
     {
         id: 4,
         name: 'Logout',
         icon: require('../../assets/images/logout.png'),
-        path: ''
+        path: 'logout'
     },
   ];
 
   const handleMenuPress = (item) => {
-    router.push(item.path); return;
-
-    if (condition) {
-      
+    if (item.path == 'share') {
+      Share.share({
+        message: "Download the Business Directory App by LordIB€!\nDownload Link: "
+      })
+      return;
+    } else if (item.path == 'logout') {
+      signOut();
+      return;
     } else {
-      
+      router.push(item.path);
     }
   }
 
