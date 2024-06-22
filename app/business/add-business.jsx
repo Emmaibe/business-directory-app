@@ -80,7 +80,7 @@ export default function AddBusiness() {
     setImage(result?.assets[0]?.uri);
   };
 
-  const handleSubmit = async () => {
+   const handleSubmit = async () => {
     if (
       !formData.name ||
       !formData.address ||

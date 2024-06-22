@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import * as WebBrowser from "expo-web-browser";
 import { useOAuth } from "@clerk/clerk-expo";
@@ -26,7 +26,7 @@ export default function LoginScreen() {
     }, []);
 
   return (
-    <View>
+    <ScrollView>
         <View className="flex items-center mt-[100]">
             <Image 
                 source={require("../assets/images/login.png")}
@@ -47,6 +47,6 @@ export default function LoginScreen() {
                 <Text className="text-center text-white font-outfit">Let's Get Started</Text>
             </TouchableOpacity>
         </View>
-    </View>
+    </ScrollView>
   )
 }

@@ -24,7 +24,6 @@ export default function PopularBusiness() {
       setBusinessList((prev) => [...prev, { id: doc.id, ...doc.data() }]);
     });
 
-    setIsLoading(false)
     } catch (error) {
       console.log(error);
     }
