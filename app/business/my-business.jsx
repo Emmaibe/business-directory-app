@@ -47,7 +47,7 @@ export default function MyBusiness() {
   };
 
   return (
-    <View className="px-[19px] mt-2 h-full">
+    <View className="px-[19px] mt-2 pb-10 h-full">
       {/* <Text className="font-outfitbold text-[25px]">My Business</Text> */}
 
       {businessList?.length > 0 && !isLoading ? (

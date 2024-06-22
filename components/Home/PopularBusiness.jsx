@@ -14,7 +14,8 @@ export default function PopularBusiness() {
   const getBusinessList = async () => {
     setBusinessList([]);
 
-    const q = query(collection(db, "BusinessList"), limit(10));
+    try {
+      const q = query(collection(db, "BusinessList"), limit(10));
 
     const querySnapShot = getDocs(q);
 
@@ -22,6 +23,12 @@ export default function PopularBusiness() {
       console.log(doc.data());
       setBusinessList((prev) => [...prev, { id: doc.id, ...doc.data() }]);
     });
+
+    setIsLoading(false)
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
 
   return (
