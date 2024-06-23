@@ -4,11 +4,11 @@
     "slug": "Business-directory-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/appIcon.jpeg",
+    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/teamwork.gif",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
