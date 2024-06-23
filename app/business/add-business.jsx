@@ -66,7 +66,6 @@ export default function AddBusiness() {
     navigation.setOptions({
       headerTitle: "Add New Business",
       headerShown: true,
-      headerBackButton: false,
     });
   }, []);
 
@@ -77,7 +76,9 @@ export default function AddBusiness() {
       quality: 1,
     });
 
-    setImage(result?.assets[0]?.uri);
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
   };
 
    const handleSubmit = async () => {
@@ -104,22 +105,21 @@ export default function AddBusiness() {
 
       const imageRef = ref(storage, "business-app/" + fileName);
 
-      uploadBytes(imageRef, blob).then((snapShot) => {
-        getDownloadURL(imageRef).then(async (url) => {
-          console.log(url);
+      await uploadBytes(imageRef, blob);
 
-          await saveBusinessDetail(url);
-        });
-      });
+      const url = await getDownloadURL(imageRef);
+
+      await saveBusinessDetail(url);
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  const saveBusinessDetail = async (imageurl) => {
+  const saveBusinessDetail = async (imageUrl) => {
     await setDoc(doc(db, "BusinessList", Date.now().toString()), {
       ...formData,
-      imageUrl: imageurl,
+      imageUrl: imageUrl,
       username: user?.fullName,
       userEmail: user?.primaryEmailAddress?.emailAddress,
       userImage: user?.imageUrl,
@@ -211,7 +211,6 @@ export default function AddBusiness() {
 
           <TouchableOpacity
             onPress={handleSubmit}
-            disabled={isLoading}
             className="p-4 bg-primary rounded-md mt-[20]"
           >
             <Text className="text-center font-outfitmedium text-white">
