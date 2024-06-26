@@ -29,14 +29,14 @@ export default function LoginScreen() {
     <ScrollView>
         <View className="flex items-center mt-[100]">
             <Image 
-                source={require("../assets/images/login.png")}
+                source={require("../assets/images/login.jpg")}
                 className="w-[220] h-[450] border-[6px] rounded-xl border-[#000]"
             />
         </View>
 
         <View className="bg-[#FFF] p-[20] -mt-[20]">
             <Text className="text-4xl font-outfitbold text-center">
-                Your Ultimate <Text className="text-primary">Community Business Directory</Text> App
+                Your Ultimate <Text className="text-primary">Community BizConnect</Text> App
             </Text>
 
             <Text className="font-outfit text-xl text-center my-[15] text-gray-100">

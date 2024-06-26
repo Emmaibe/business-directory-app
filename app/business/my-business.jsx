@@ -59,17 +59,17 @@ export default function MyBusiness() {
             <ExploreBusinessListCard key={index} business={item} />
           )}
         />
-      ) : businessList?.length < 0 && !isLoading ? (
-        <Text className="text-[25px] font-outfitbold text-gray-100 text-center mt-[50%]">
-          No Business Found
-        </Text>
-      ) : (
+      ) : isLoading ? (
         <ActivityIndicator
           size={"large"}
           color={"#7F57F1"}
           className="mt-[90%]"
         />
-      )}
+      ) : !isLoading ? (
+        <Text className="text-[25px] font-outfitbold text-gray-100 text-center mt-[90%]">
+          No Business Found
+        </Text>
+      ) : ''}
     </View>
   );
 }
